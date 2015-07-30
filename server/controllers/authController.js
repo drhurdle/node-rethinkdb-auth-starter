@@ -5,8 +5,8 @@ var tokenAuth = require('../services/tokenAuth');
 
 exports.authenticate = function(req, res) {
 
-  var username = req.param('username');
-  var password = req.param('password');
+  var username = req.body.username;
+  var password = req.body.password;
 
   if (!username || !password) {
     return res.json({Message : "Username and Password required"});

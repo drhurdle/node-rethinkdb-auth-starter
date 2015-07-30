@@ -1,6 +1,6 @@
 module.exports = function(req, res, next) {
   
-  var userId = req.param('id');
+  var userId = req.body.id;
   var currentUserId = req.token.id;
 
   if (userId != currentUserId) {

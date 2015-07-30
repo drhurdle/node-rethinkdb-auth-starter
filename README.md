@@ -24,7 +24,7 @@ API endpoints at ```localhost:8000/api/``` :
 
 | Method | Path | Parameters |  Protected |     |
 | :---: | :---: | :---: | :---: | :--- |
-| POST | /user | username : password : confirmPassword | none | Create a User and returns token|
+| POST | /user | username : password | none | Create a User and returns token|
 | GET | /user | - - - | none | Returns List of User Objects |
 | GET | /user/:id | - - - | none | Returns the user with the given ID |
 | PUT | /user/:id | - - - | isAuthorized, isCurrentUser | Updates user with the a given ID |

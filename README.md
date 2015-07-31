@@ -8,8 +8,6 @@ I plan to add some additional, common policies for restricting access to API end
 
 Feel free to use it to build your api's let me know if there is anything else I can add that would be usefull and common for many API's
 
-Remember sure to change your secret string in ```/server/services/tokenAuth.js```
-
 Install dependencies : 
 ```
 $ npm install

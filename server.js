@@ -10,11 +10,6 @@ var isCurrentUser  = require('./server/policies/isCurrentUser');
 var port = process.env.PORT || 8000;
 var router = express.Router();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.use('/api', router);
-
 app.all('*', function(req, res, next) {
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -23,11 +18,15 @@ app.all('*', function(req, res, next) {
        next();
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use('/api', router);
+
 router.use(function(req, res, next) {
 	console.log('API is being used');
 	next();
 });
-
 
 app.get('/', function(req, res){
 	res.json({ message: 'The API is ready'});

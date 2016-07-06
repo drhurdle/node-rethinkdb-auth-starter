@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 var User = thinky.createModel("user", {
 
 	username        : type.string(),
-	encryptedPW     : type.string()
+	password        : type.string()
 
 });
 
@@ -18,10 +18,10 @@ User.pre('save', function(next) {
   bcrypt.genSalt(10, function (err, salt) {
 
     if(err) return next(err);
-    bcrypt.hash(self.encryptedPW, salt, function (err, hash) {
+    bcrypt.hash(self.password, salt, function (err, hash) {
 
       if(err) return next(err);
-      self.encryptedPW = hash;
+      self.password = hash;
       next();
 
     });
@@ -31,7 +31,7 @@ User.pre('save', function(next) {
 
 User.comparePassword = function(password, user, callback) {
 
-  bcrypt.compare(password, user.encryptedPW, function(err, match) {
+  bcrypt.compare(password, user.password, function(err, match) {
 
     if (err) callback(err);
 

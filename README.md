@@ -22,12 +22,12 @@ API endpoints at ```localhost:8000/api/``` :
 
 | Method | Path | Parameters |  Protected |     |
 | :---: | :---: | :---: | :---: | :--- |
-| POST | /user | username : encryptedPW | none | Create a User and returns token|
+| POST | /user | username : password | none | Create a User and returns token|
 | GET | /user | - - - | none | Returns List of User Objects |
 | GET | /user/:id | - - - | none | Returns the user with the given ID |
 | PUT | /user/:id | - - - | isAuthorized, isCurrentUser | Updates user with the a given ID |
 | DEL | /user/:id | - - - | isAuthorized, isCurrentUser | Deletes a user with the given ID |
-| POST | /login | username : encryptedPW | none | Log In Route : Returns logged in user and token |
+| POST | /login | username : password | none | Log In Route : Returns logged in user and token |
 
 
 

@@ -8,7 +8,7 @@ var tokenAuth = require('../services/tokenAuth');
 exports.register = function(req , res){
 
 	if(!req.body.username){return res.json({Error : "Username is Required"});}
-	if(!req.body.encryptedPW){return res.json({Error : "Password is Required"});}
+	if(!req.body.password){return res.json({Error : "Password is Required"});}
 
 	User.filter({username:req.body.username}).run().then(function(userArray){
 		if(userArray[0]){return res.json({Error : "Username is in use"});}
@@ -55,7 +55,7 @@ exports.editUser = function(req , res){
 	var id = req.params.id;
 	User.get(id).run().then(function(user){
 		if (req.body.username) {user.username = req.body.username;}
-		if (req.body.encyptedPW) {user.encryptedPW = req.body.encryptedPW;}
+		if (req.body.encyptedPW) {user.password = req.body.password;}
 		user.save().then(function(result) {
 			res.json({ message: 'User Updated !!'});
 		}).error(function(res){

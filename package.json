@@ -4,12 +4,24 @@
   "version": "1.0.0",
   "license": "MIT",
   "description": "A starter API using NodeJS, Express, and RethinkDB including token authentication.",
-  "keywords": ["api","rethinkdb","thinky","jsonwebtoken","JWT","express","starter","nodejs","token","authentication"],
+  "keywords": [
+    "api",
+    "rethinkdb",
+    "thinky",
+    "jsonwebtoken",
+    "JWT",
+    "express",
+    "starter",
+    "nodejs",
+    "token",
+    "authentication"
+  ],
   "dependencies": {
     "bcrypt": "0.8.7",
     "body-parser": "1.13.2",
     "express": "4.13.1",
     "jsonwebtoken": "5.0.4",
+    "mocha": "^2.5.3",
     "rethinkdb": "2.0.2",
     "thinky": "2.0.10"
   }

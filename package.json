@@ -21,7 +21,7 @@
     "body-parser": "1.13.2",
     "express": "4.13.1",
     "jsonwebtoken": "5.0.4",
-    "mocha": "^2.5.3",
+    "mocha": "2.5.3",
     "rethinkdb": "2.0.2",
     "thinky": "2.0.10"
   }

@@ -7,11 +7,11 @@ var tokenAuth = require('../services/tokenAuth');
 
 exports.register = function(req , res){
 
-	if(!req.body.username){return res.json({Error : "Username is Required"});}
-	if(!req.body.password){return res.json({Error : "Password is Required"});}
+	if(!req.body.username){return res.status(422).json({message : "Username is Required"});}
+	if(!req.body.password){return res.status(422).json({message : "Password is Required"});}
 
 	User.filter({username:req.body.username}).run().then(function(userArray){
-		if(userArray[0]){return res.json({Error : "Username is in use"});}
+		if(userArray[0]){return res.status(422).json({message : "Username is in use"});}
   
 
 		var user = new User(req.body);

@@ -4,7 +4,7 @@ module.exports = function(req, res, next) {
   var currentUserId = req.token.id;
 
   if (userId != currentUserId) {
-    return res.json({Error : 'You are not allowed to do that'});
+    return res.status(401).json({message : 'You are not allowed to do that'});
   }
 
   next();

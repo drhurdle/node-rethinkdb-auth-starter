@@ -16,15 +16,15 @@ module.exports = function (req, res, next) {
       }
 
     } else {
-      return res.json({err: 'Format is Authorization: Bearer [token]'});
+      return res.status(400).json({message: 'Format is Authorization: Bearer [token]'});
     }
 
   } else {
-    return res.json({err: 'No Authorization header was found'});
+    return res.status(400).json({message: 'No Authorization header was found'});
   }
 
   tokenAuth.verify(token, function (err, token) {
-    if (err) return res.json({err: 'Invalid Token!'});
+    if (err) return res.status(401).json({message: 'Invalid Token!'});
     req.token = token; 
     next();
   });

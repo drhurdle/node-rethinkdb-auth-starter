@@ -9,7 +9,7 @@ exports.authenticate = function(req, res) {
   var password = req.body.password;
 
   if (!username || !password) {
-    return res.json({Message : "Username and Password required"});
+    return res.status(422).json({message : "Username and Password required"});
   }
 
   User.filter({username:username}).run().then(function(userArray){
@@ -17,17 +17,17 @@ exports.authenticate = function(req, res) {
     var user = userArray[0];
 
     if (!user) {
-      return res.json({Message : "The username is incorrect"});
+      return res.status(422).json({message : "This username does not exist"});
     }
 
     User.comparePassword(password, user, function (err, valid){
 
       if (err) {
-        return res.json({Message : err});
+        return res.status(422).json({message : err});
       }
 
       if (!valid) {
-        return res.json({Message : "The username or password is incorrect"});
+        return res.status(422).json({message : "The username or password is incorrect"});
       } else {
         res.json({
           user: user,

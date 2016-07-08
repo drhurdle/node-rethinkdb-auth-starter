@@ -19,11 +19,12 @@
   "dependencies": {
     "bcrypt": "0.8.7",
     "body-parser": "1.13.2",
-    "chai": "^3.5.0",
     "express": "4.13.1",
     "jsonwebtoken": "5.0.4",
-    "mocha": "2.5.3",
     "rethinkdb": "2.0.2",
-    "thinky": "2.0.10"
+    "thinky": "2.0.10",
+    "mocha": "2.5.3",
+    "chai": "3.5.0",
+    "supertest": "1.2.0"
   }
 }

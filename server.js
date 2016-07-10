@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 app.use('/api', router);
 
 router.use(function(req, res, next) {
-	console.log('API is being used');
 	next();
 });
 

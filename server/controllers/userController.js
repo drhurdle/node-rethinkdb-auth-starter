@@ -7,11 +7,11 @@ var tokenAuth = require('../services/tokenAuth');
 
 exports.register = function(req , res){
 
-	if(!req.body.username){return res.status(422).json({message : "Username is Required"});}
-	if(!req.body.password){return res.status(422).json({message : "Password is Required"});}
+	if(!req.body.username){return res.status(422).json({message : 'Username is Required'});}
+	if(!req.body.password){return res.status(422).json({message : 'Password is Required'});}
 
 	User.filter({username:req.body.username}).run().then(function(userArray){
-		if(userArray[0]){return res.status(422).json({message : "Username is in use"});}
+		if(userArray[0]){return res.status(422).json({message : 'Username is in use'});}
   
 
 		var user = new User(req.body);
@@ -22,7 +22,7 @@ exports.register = function(req , res){
 				token: tokenAuth.issue({id: user.id})
 				});
 		}).error(function(res){
-			console.log("Error : " + res);
+			console.log('Error : ' + res);
 	 	});
 	});
 };
@@ -33,7 +33,7 @@ exports.users = function(req , res){
 	var user = User.run().then(function(result){
 		res.send(JSON.stringify(result));
 	}).error(function(res){
-		console.log("Error : " + res);
+		console.log('Error : ' + res);
  	});
 };
 
@@ -44,7 +44,7 @@ exports.user = function(req , res){
 	User.get(id).run().then(function(result){
 		res.send(JSON.stringify(result));
 	}).error(function(res){
-		console.log("Error : " + res);
+		console.log('Error : ' + res);
  	});
 };
 
@@ -58,7 +58,7 @@ exports.editUser = function(req , res){
 		user.save().then(function(result) {
 			res.json({ message: 'User Updated !!'});
 		}).error(function(res){
-			console.log("Error : " + res);
+			console.log('Error : ' + res);
  		});
 	});
 };

@@ -3,7 +3,7 @@ var type = thinky.type;
 var bcrypt = require('bcrypt');
 
 
-var User = thinky.createModel("user", {
+var User = thinky.createModel('user', {
 
 	username        : type.string(),
 	password        : type.string()

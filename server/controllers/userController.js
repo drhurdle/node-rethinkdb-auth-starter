@@ -17,7 +17,6 @@ exports.register = function(req , res){
 		var user = new User(req.body);
 
 		user.save().then(function(result) {
-			console.log("User Created");
 			res.json({
 				user: user,
 				token: tokenAuth.issue({id: user.id})

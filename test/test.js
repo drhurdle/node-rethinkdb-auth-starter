@@ -129,7 +129,7 @@ describe('User Tests', function() {
 
     it('should return a 200 status and verify that no persons are in the db', function(done) {
       request(url)
-        .get('/user')
+        .get('/users')
         .end(function(err, res){
           assert.equal(res.status, 200);
           assert.equal(Object.keys(res.body).length, 0);

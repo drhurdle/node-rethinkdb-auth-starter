@@ -33,7 +33,7 @@ app.get('/', function(req, res){
 
 
 router.route('/user').post(userController.register);
-router.route('/user').get(userController.users);
+router.route('/users').get(userController.users);
 router.route('/user/:id').get(userController.user);
 router.route('/user/:id').put(isAuthorized, isCurrentUser, userController.editUser);
 router.route('/user/:id').delete(isAuthorized, isCurrentUser, userController.deleteUser);

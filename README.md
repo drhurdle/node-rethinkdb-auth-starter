@@ -17,6 +17,10 @@ Start up rethinkdb and the server :
 $ rethinkdb
 $ node server.js
 ```
+To run tests :
+```
+$ mocha
+```
 
 API endpoints at ```localhost:8000/api/``` :
 

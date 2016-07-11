@@ -24,7 +24,7 @@ module.exports = function (req, res, next) {
   }
 
   tokenAuth.verify(token, function (err, token) {
-    if (err) return res.status(401).json({message: 'Invalid Token!'});
+    if (err) return res.status(401).json({message: 'Invalid Token'});
     req.token = token; 
     next();
   });

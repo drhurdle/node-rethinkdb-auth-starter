@@ -68,9 +68,6 @@ exports.deleteUser = function(req , res){
 
 	var id = req.params.id;
 	User.get(id).delete().run().then(function(error , result){
-		res.json({
-			error : error,
-			result : result
-		})
+		res.status(200).json({message: 'User Deleted'});
 	});
 };

@@ -72,7 +72,56 @@ describe('User Tests', function() {
     });
   });
 
+  describe('Viewing users', function() {
+
+    it('should return a 200 status and an array containing both persons', function(done) {
+      request(url)
+        .get('/users')
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.length, 2);
+          done();
+        });
+    });
+
+    it('should return a 200 status and an object representing person1', function(done) {
+      request(url)
+        .get('/user/' + person1.user.id)
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.id, person1.user.id);
+          assert.equal(res.body.password, person1.user.password);
+          assert.equal(res.body.username, person1.user.username);
+          done();
+        });
+    });
+
+    it('should return a 200 status and an object representing person2', function(done) {
+      request(url)
+        .get('/user/' + person2.user.id)
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.id, person2.user.id);
+          assert.equal(res.body.password, person2.user.password);
+          assert.equal(res.body.username, person2.user.username);
+          done();
+        });
+    });
+
+    it('should return a 404 status and an error message', function(done){
+      request(url)
+        .get('/user/asdfqwre')
+        .end(function(err, res){
+          assert.equal(res.status, 404);
+          assert.equal(res.body.message, 'User Not Found');
+          done();
+        });
+    });
+
+  });
+
   describe('Deleting a User', function() {
+
     it('should give correct error message and 400 status when no auth token is found', function(done) {
       request(url)
         .del('/user/' + person1.user.id)
@@ -132,7 +181,7 @@ describe('User Tests', function() {
         .get('/users')
         .end(function(err, res){
           assert.equal(res.status, 200);
-          assert.equal(Object.keys(res.body).length, 0);
+          assert.equal(res.body.length, 0);
           done();
         });
     });

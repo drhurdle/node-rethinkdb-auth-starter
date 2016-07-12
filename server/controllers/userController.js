@@ -21,8 +21,8 @@ exports.register = function(req , res){
 				user: user,
 				token: tokenAuth.issue({id: user.id})
 				});
-		}).error(function(res){
-			console.log('Error : ' + res);
+		}).error(function(err){
+			res.status(404).json({message : 'An Error has Occured'});
 	 	});
 	});
 };
@@ -31,9 +31,9 @@ exports.register = function(req , res){
 exports.users = function(req , res){
 
 	var user = User.run().then(function(result){
-		res.send(JSON.stringify(result));
-	}).error(function(res){
-		console.log('Error : ' + res);
+		res.status(200).json(result);
+	}).error(function(err){
+		res.status(404).json({message : 'An Error has Occured'});
  	});
 };
 
@@ -42,9 +42,9 @@ exports.user = function(req , res){
 
 	var id = req.params.id;
 	User.get(id).run().then(function(result){
-		res.send(JSON.stringify(result));
-	}).error(function(res){
-		console.log('Error : ' + res);
+		res.status(200).json(result);
+	}).error(function(err){
+		res.status(404).json({message : 'User Not Found'});
  	});
 };
 
@@ -56,9 +56,9 @@ exports.editUser = function(req , res){
 		if (req.body.username) {user.username = req.body.username;}
 		if (req.body.encyptedPW) {user.password = req.body.password;}
 		user.save().then(function(result) {
-			res.json({ message: 'User Updated !!'});
+			res.status(200).json({ message: 'User Updated !!'});
 		}).error(function(res){
-			console.log('Error : ' + res);
+			res.status(404).json({message : 'An Error has Occured'});
  		});
 	});
 };

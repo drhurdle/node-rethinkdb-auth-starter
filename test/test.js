@@ -122,6 +122,65 @@ describe('User Tests', function() {
 
   describe('Authenticating a User', function (){
 
+    it('should return a 422 status and an error message when username is blank', function(done){
+      request(url)
+        .post('/login')
+        .send({'password' : 'Password2'})
+        .end(function(err, res){
+          assert.equal(res.status, 422);
+          assert.equal(res.body.message, 'Username and Password required');
+          done();
+        });
+    });
+
+    it('should return a 422 status and an error message when password is blank', function(done){
+      request(url)
+        .post('/login')
+        .send({'username' : 'UserName2'})
+        .end(function(err, res){
+          assert.equal(res.status, 422);
+          assert.equal(res.body.message, 'Username and Password required');
+          done();
+        });
+    });
+
+    it('should return a 422 status and an error message when username does cannot be found', function(done){
+      request(url)
+        .post('/login')
+        .send({'username' : 'UserName999', 'password' : 'Password1'})
+        .end(function(err, res){
+          assert.equal(res.status, 422);
+          assert.equal(res.body.message, 'This username does not exist');
+          done();
+        });
+    });
+
+    it('should return a 422 status and an error message when login information does not match', function(done){
+      request(url)
+        .post('/login')
+        .send({'username' : 'UserName1', 'password' : 'Password2'})
+        .end(function(err, res){
+          assert.equal(res.status, 422);
+          assert.equal(res.body.message, 'The username or password is incorrect');
+          done();
+        });
+    });
+
+    it('should return a 200 status, user object, and authentication token', function(done){
+      request(url)
+        .post('/login')
+        .send({'username' : 'UserName1', 'password' : 'Password1'})
+        .end(function(err, res){
+          assert.equal(res.status, 200);
+          assert.equal(res.body.user.id, person1.user.id);
+          assert.equal(res.body.user.password, person1.user.password);
+          assert.equal(res.body.user.username, person1.user.username);
+          assert.notEqual(res.body.token, '');
+          assert.notEqual(res.body.token, person1.token);
+          done();
+        });
+    });
+
   });
 
   describe('Deleting a User', function() {
@@ -189,5 +248,6 @@ describe('User Tests', function() {
           done();
         });
     });
+
   });
 });

@@ -48,22 +48,6 @@ exports.user = function(req , res){
  	});
 };
 
-
-exports.editUser = function(req , res){
-
-	var id = req.params.id;
-	User.get(id).run().then(function(user){
-		if (req.body.username) {user.username = req.body.username;}
-		if (req.body.encyptedPW) {user.password = req.body.password;}
-		user.save().then(function(result) {
-			res.status(200).json({ message: 'User Updated !!'});
-		}).error(function(res){
-			res.status(404).json({message : 'An Error has Occured'});
- 		});
-	});
-};
-
-
 exports.deleteUser = function(req , res){
 
 	var id = req.params.id;

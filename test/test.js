@@ -120,6 +120,10 @@ describe('User Tests', function() {
 
   });
 
+  describe('Authenticating a User', function (){
+
+  });
+
   describe('Deleting a User', function() {
 
     it('should give correct error message and 400 status when no auth token is found', function(done) {

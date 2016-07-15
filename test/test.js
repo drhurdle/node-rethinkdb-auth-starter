@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
 var request = require('supertest');
+var sleep = require('sleep');
 
 var url = 'http://localhost:8000/api';
 
@@ -36,6 +37,7 @@ describe('User Tests', function() {
         .post('/user')
         .send({'username' : 'UserName1', 'password' : 'Password1'})
         .end(function(err, res){
+          sleep.sleep(1); //needed so JWT's aren't created too quickly with the same usernames
           assert.equal(res.status, 200);
           assert.equal(res.body.user.username, 'UserName1');
           assert.notEqual(res.body.user.password, 'Password1');
@@ -61,6 +63,7 @@ describe('User Tests', function() {
         .post('/user')
         .send({'username' : 'UserName2', 'password' : 'Password2'})
         .end(function(err, res){
+          sleep.sleep(1); //needed so JWT's aren't created too quickly with the same usernames
           assert.equal(res.status, 200);
           assert.equal(res.body.user.username, 'UserName2');
           assert.notEqual(res.body.user.password, 'Password2');

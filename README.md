@@ -12,7 +12,7 @@ Install dependencies :
 ```
 $ npm install
 ```
-Start up rethinkdb and the server :
+Start up rethinkdb and the server (works with rethinkdb 2.3.4):
 ```
 $ rethinkdb
 $ node server.js

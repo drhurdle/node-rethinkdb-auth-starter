@@ -4,7 +4,7 @@ module.exports.issue = function(payload) {
   return jwt.sign(
     payload,
     process.env.TOKEN_SECRET || 'dontforgettochangethissecretvariable',
-    { expiresInMinutes : 180 }
+    { expiresIn : 180 }
     );
 };
 

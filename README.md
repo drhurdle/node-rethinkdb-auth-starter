@@ -1,3 +1,7 @@
+# This repo is a bit out of date
+I do plan to update it and add a few features I would like but have not found the time.
+I still don't think it is a bad pattern or starting point to follow but needs to be updated
+
 # node-rethinkdb-auth-starter
 
 This is a simple starter API using NodeJS, Express, and RethinkDB including token authentication.  
